@@ -34,6 +34,7 @@ print("Model loaded Now")
 
 
 # In[7]:
+IMAGE_FOLDER = "/home/anshal/Work/ML⁄DL/Weather_Detection/static"
 
 
 #predict function
@@ -50,7 +51,7 @@ def predict_img(path):
     return result
 
 
-@app.route('/')
+@app.route('/',methods=["GET","POST"])
 def index():
     #main page
     return render_template("index.html",data="Hey")
@@ -59,12 +60,19 @@ def index():
 @app.route('/predict',methods=["POST"])
 def predict():
     #get image
-    img = request.files['img']
-    img.save("img.jpg")
+    if request.method == "POST":
+        img = request.files['img']
 
-    image = predict_img("img.jpg")
+        if img:
+            img_location = os.path.join(
+                IMAGE_FOLDER,
+                img.filename
+            )
+            img.save(img_location)
 
-    return render_template("predict.html",data=image)
+    image = predict_img(img_location)
+
+    return render_template("index.html",data=image,image_loc = img.filename)
 
 
 # In[11]:
