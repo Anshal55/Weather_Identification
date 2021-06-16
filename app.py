@@ -8,7 +8,7 @@
 from flask import Flask,redirect,url_for,request,render_template
 
 #keras
-from tensorflow import keras
+#from tensorflow import keras
 from keras.preprocessing.image import load_img,img_to_array
 from keras.models import load_model
 
