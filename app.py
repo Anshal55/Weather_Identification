@@ -34,7 +34,7 @@ print("Model loaded Now")
 
 
 # In[7]:
-IMAGE_FOLDER = "/home/anshal/Work/ML⁄DL/Weather_Detection/static"
+IMAGE_FOLDER = os.getcwd()+ "/static"
 
 
 #predict function
