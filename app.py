@@ -8,6 +8,7 @@
 from flask import Flask,redirect,url_for,request,render_template
 
 #keras
+
 from tensorflow import keras
 from keras.preprocessing.image import load_img,img_to_array
 from keras.models import load_model
@@ -53,7 +54,7 @@ def predict_img(path):
 @app.route('/',methods=["GET","POST"])
 def index():
     #main page
-    return render_template("index.html",data="Hey")
+    return render_template("index.html")
 
 
 @app.route('/predict',methods=["POST"])
